@@ -28,22 +28,21 @@ One UI 5.0 이후 버전 안드로이드에서는 Intelligent Wi-Fi 기능을 �
 ![diagram](images/01-grad-project-diagram.png)
 
 ### 2.2. 사용 기술
-### 2.2.1. Backend
 | 기술명  | 사용처  | 설명 |
 |:-:|:-:|:-:|
-| OpenWRT  | Infra  |   |
-| Shell Script  | Infra  |   |
-| Docker  | Backend, Raspberry Pi  |   |
-| Docker Compose | Backend, Raspberry Pi  |   |
-| Nginx  | Backend, Raspberry Pi  |   |
-| Spring Boot  | Backend  |   |
-| Redis  | Backend  |   |
-| AWS EC2  | Backend  |   |
-| AWS RDS  | Backend  |   |
-| Grafana  | Raspberry Pi  |   |
-| Prometheus  | Raspberry Pi  |   |
-| Golang  | Raspberry Pi  |   |
-| Jetpack Compose  | Android  |   |
+| OpenWRT  | Infra  | 라우터의 능동적인 제어를 위한 경량 리눅스 |
+| Shell Script  | Infra  | 리눅스 동작 자동화를 위한 스크립트 |
+| Docker  | Backend, Raspberry Pi  | 서버에서 백엔드, 모니터링 시스템을 컨테이너로 실행 |
+| Docker Compose | Backend, Raspberry Pi  | 다양한 도커 옵션 및 종속성 설정 |
+| Nginx  | Backend, Raspberry Pi  | 한 도메인에 대한 요청을 여러 도커 컨테이너에 분배하기 위한 툴 |
+| Spring Boot  | Backend  | 다중 라우터 관리 서버 프레임워크 |
+| AWS EC2  | Backend  | 다중 라우터 관리 서버 배포용 클라우드 인스턴스 |
+| AWS RDS  | Backend  | 다중 라우터 관리 서버를 위한 메인 데이터베이스 |
+| Redis  | Backend  | RDS - 관리 서버 사이 데이터베이스 성능 향상을 위한 캐싱 툴 |
+| Prometheus  | Raspberry Pi  | 라우터 네트워크 관제를 위한 메트릭 데이터 수집 |
+| Grafana  | Raspberry Pi  | 라우터 메트릭 데이터에 대한 시각화 및 알림 툴 |
+| Golang  | Raspberry Pi  | Prometheus 설정 변경 API를 위한 서버 제작 |
+| Jetpack Compose  | Android  | 사용자 및 관리자의 편의를 위한 안드로이드 앱 제작 |
 
 
 ## 3. 설치 및 사용 방법
