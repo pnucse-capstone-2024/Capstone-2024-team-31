@@ -1,0 +1,68 @@
+server:
+  servlet:
+    context-path: /api/v1
+    encoding:
+      charset: utf-8
+      force: true
+  port: 8080
+
+security:
+  jwt-config:
+    secret:
+      access: ${ACCESS_TOKEN_SECRET}
+      refresh: ${REFRESH_TOKEN_SECRET}
+    redis:
+      host: localhost
+      port: 6379
+  open-api:
+    secret-key: ${OPEN_API_SECRET_KEY}
+    token: ${OPEN_API_TOKEN}
+  service-key: ${WASIN_SERVICE_KEY}
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:tc:mysql:8.0:///test_container_test
+    username: root
+    password: 0912
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+      default_batch_fetch_size: 100
+    open-in-view: false
+  mail:
+    email: ${G_EMAIL}
+    password: ${G_PASSWORD}
+
+logging:
+  level:
+    '[com.wasin.wasin]': DEBUG
+    '[org.hibernate.type]': TRACE
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+
+kwon:
+  host: ${KWON_HOST}
+  username: ${KWON_USERNAME}
+  password: ${KWON_PASSWORD}
+
+jang:
+  header: ${JANG_HEADER}
+  url: ${JANG_URL}
+  datasource-uid: ${JANG_DATASOURCE_UID}
+
+cloud:
+  aws:
+    s3:
+      bucket: wasin-buckect
+    stack.auto: false
+    region.static: ap-northeast-2
+    credentials:
+      accessKey: ${S3_ACCESS_KEY}
+      secretKey: ${S3_ACCESS_SECRET_KEY}

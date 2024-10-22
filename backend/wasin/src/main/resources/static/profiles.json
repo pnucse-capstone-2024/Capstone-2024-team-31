@@ -1,0 +1,30 @@
+[
+  {
+    "index": 1,
+    "title": "기본 모드",
+    "description": "공유기를 평소와 같은 방식으로 운영해요",
+    "tip": "",
+    "ssh": "profile_default"
+  },
+  {
+    "index": 2,
+    "title": "사용자 수 제한",
+    "description": "트래픽이 하나의 와이파이에 몰리면 사용자 수를 제한해줘요",
+    "tip": "축제 등 사용자가 갑자기 늘어날 때 사용하기 좋아요!",
+    "ssh": "profile_user_limit"
+  },
+  {
+    "index": 3,
+    "title": "초절전 모드",
+    "description": "라우터를 최소 전력으로 오랫동안 사용할 수 있도록 해서 에너지를 절약해줘요",
+    "tip": "방학 등 사용자 수가 적고 관리 비용을 줄이고 싶을 때 좋아요!",
+    "ssh": "profile_pow_saving"
+  },
+  {
+    "index": 4,
+    "title": "최대한 많은 이용자 수용",
+    "description": "최소한의 네트워크 속도로 많은 사람에게 연결을 보장해줘요",
+    "tip": "중요한 시험을 온라인으로 칠 때 등 많은 수용자에게 네트워크를 보장하는게 중요할 때 좋아요!",
+    "ssh": "profile_connective"
+  }
+]

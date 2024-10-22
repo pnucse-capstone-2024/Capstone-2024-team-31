@@ -1,0 +1,60 @@
+services:
+  database:
+    image: mysql
+    container_name: wasin
+    ports:
+      - "3306:3306"
+    volumes:  #로컬 디비를 이용하기 위한 Volume 설정
+      - ./mysql/db:/var/lib/mysql
+    networks:
+      - spring-stage-network
+
+  redis:
+    image: redis:alpine
+    container_name: redis_stage
+    hostname: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - spring-stage-network
+
+  nginx:
+    image: nginx:latest
+    container_name: server_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/app/
+      - ./nginx:/etc/nginx/nginx.conf
+    environment:
+      - TZ=Asia/Seoul
+    depends_on:
+      - wasin
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    networks:
+      - spring-stage-network
+
+  wasin:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: web_stage
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./log:/opt/wasin/log
+      - ./src/main/resources:/opt/wasin/src/main/resources
+    tty: true
+    restart: on-failure:2
+    depends_on:
+      - redis
+      - database
+    networks:
+      - spring-stage-network
+
+
+
+networks:
+  spring-stage-network:
+
