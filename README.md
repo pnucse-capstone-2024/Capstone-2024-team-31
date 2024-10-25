@@ -86,6 +86,12 @@ wget https://raw.githubusercontent.com/pnucse-capstone-2024/Capstone-2024-team-3
 - `super_admin-release.apk`: 최종 관리자 입장의 앱 
 
 ## 4. 소개 및 시연 영상
-| /docs/발표자표/발표자료.pdf 를 참고해주세요.
+| `/docs/발표자표/발표자료.pdf` 를 참고해주세요.
 
 ## 5. 팀 소개
+| Name              | Contact Information     | Roles                                                   | 
+|-------------------|-------------------------|---------------------------------------------------------|
+| 권내현 | sharon.nemhee@gmail.com | OpenWRT 인프라 구성, 공유기 프로파일 작성, 공유기 상태 점검 |
+| 남원정 | 
+leena0912@pusan.ac.kr   | 애플리케이션 설계, 스프링부트 서버 개발 및 AWS 배포, 안드로이드 애플리케이션 개발 |
+| 장원석 | nicoffeingg@gmail.com   | 모니터링 환경 구성, Prometheus Manager 구현 |
