@@ -27,22 +27,15 @@ One UI 5.0 이후 버전 안드로이드에서는 Intelligent Wi-Fi 기능을 �
 ### 2.1. 시스템 구성도
 ![diagram](images/01-grad-project-diagram.png)
 
-### 2.2. 사용 기술
-| 기술명  | 사용처  | 설명 |
-|:-:|:-:|:-:|
-| OpenWRT  | Infra  | 라우터의 능동적인 제어를 위한 경량 리눅스 |
-| Shell Script  | Infra  | 리눅스 동작 자동화를 위한 스크립트 |
-| Docker  | Backend, Raspberry Pi  | 서버에서 백엔드, 모니터링 시스템을 컨테이너로 실행 |
-| Docker Compose | Backend, Raspberry Pi  | 다양한 도커 옵션 및 종속성 설정 |
-| Nginx  | Backend, Raspberry Pi  | 한 도메인에 대한 요청을 여러 도커 컨테이너에 분배하기 위한 툴 |
-| Spring Boot  | Backend  | 다중 라우터 관리 서버 프레임워크 |
-| AWS EC2  | Backend  | 다중 라우터 관리 서버 배포용 클라우드 인스턴스 |
-| AWS RDS  | Backend  | 다중 라우터 관리 서버를 위한 메인 데이터베이스 |
-| Redis  | Backend  | RDS - 관리 서버 사이 데이터베이스 성능 향상을 위한 캐싱 툴 |
-| Prometheus  | Raspberry Pi  | 라우터 네트워크 관제를 위한 메트릭 데이터 수집 |
-| Grafana  | Raspberry Pi  | 라우터 메트릭 데이터에 대한 시각화 및 알림 툴 |
-| Golang  | Raspberry Pi  | Prometheus 설정 변경 API를 위한 서버 제작 |
-| Jetpack Compose  | Android  | 사용자 및 관리자의 편의를 위한 안드로이드 앱 제작 |
+### 2.2. API 설계
+![API1](https://github.com/user-attachments/assets/96bc088a-993e-4fb0-aa9d-ce7243a0131e)
+![API2](https://github.com/user-attachments/assets/34e4f878-6ef9-4d02-875a-266b3c5afd64)
+
+### 2.3. 데이터베이스 설계
+![데이터베이스](https://github.com/user-attachments/assets/8bc81b7c-37ab-42e1-b4b3-0e3e51fc3417)
+
+### 2.4 화면 설계
+![화면설계](https://github.com/user-attachments/assets/89f85e63-5bbd-457f-92c4-fb4e7cbbf841)
 
 
 ## 3. 설치 및 사용 방법
@@ -68,30 +61,42 @@ wget https://raw.githubusercontent.com/pnucse-capstone-2024/Capstone-2024-team-3
 ```
 
 ### 3.2. 백엔드
-1. `backend` 폴더를 배포 환경으로 옮깁니다.
-2. 배포 환경의 `backend` 폴더에서 docker compose를 실행합니다.
-```docker compose up -d .```
+> [API주소](http://api.wasin.site:8080)
+- java 17
+- spring boot 3.3.1
+```
+git clone https://github.com/pnucse-capstone-2024/Capstone-2024-team-31.git
+cd backend/wasin
+// 환경변수 설정, 레디스 실행
+./gradlew build -x test
+cd build/libs
+java -jar wasin-0.0.1-SNAPSHOT.jar
+```
 
 ### 3.3. 라즈베리파이
-1. `raspberry-pi` 폴더를 라즈베리파이 배포 환경으로 옮깁니다.
-2. 배포 환경의 `raspberry-pi` 폴더에서 docker compose를 실행합니다.
-```docker compose up -d .```
-
-이후 8000번 포트로는 Grafana를, 9090번 포트로는 Prometheus 대시보드에 접근할 수 있습니다. 
+> [그라파나 서버](http://grafana.daily-cotidie.com)
+>
+> [프로메테우스 서버](https://prometheus.daily-cotidie.com)
+```
+git clone https://github.com/pnucse-capstone-2024/Capstone-2024-team-31.git
+cd infra
+cd raspberry-pi
+docker-compose up -d .
+```
 
 ### 3.4. 안드로이드
-리포지토리의 .apk 파일 중 하나를 안드로이드 스마트폰에 설치합니다.
-- `user-release.apk`: 일반 사용자 입장의 앱 (핸드오프 및 주변 공유기 품질 조회)
-- `admin-release.apk`: 일반 관리자 입장의 앱 (공유기 프로파일 관리 및 모니터링 등)
-- `super_admin-release.apk`: 최종 관리자 입장의 앱 
+리포지토리의 .apk 실행 파일을 안드로이드 스마트폰에 설치합니다.
+- `user-release.apk`: 일반 사용자 앱 (핸드오프 및 주변 공유기 품질 조회)
+- `admin-release.apk`: 일반 관리자 앱 (공유기 프로파일 관리 및 모니터링 등)
+- `super_admin-release.apk`: 최종 관리자 앱
+
 
 ## 4. 소개 및 시연 영상
-| `/docs/발표자표/발표자료.pdf` 를 참고해주세요.
-| (유튜브 영상 링크 수정 예정)
+[![유튜브](https://img.youtube.com/vi/mBNGVh2ZdKo/0.jpg)](https://www.youtube.com/watch?v=mBNGVh2ZdKo)
 
 ## 5. 팀 소개
 | Name              | Contact Information     | Roles                                                   | 
 |-------------------|-------------------------|---------------------------------------------------------|
-| 권내현 | sharon.nemhee@gmail.com | OpenWRT 인프라 구성, 공유기 프로파일 작성, 공유기 상태 점검 |
+| 권내현 | mojang1104@pusan.ac.kr | OpenWRT 인프라 구성, 공유기 프로파일 작성, 공유기 상태 점검 |
 | 남원정 | leena0912@pusan.ac.kr   | 애플리케이션 설계, 스프링부트 서버 개발 및 AWS 배포, 안드로이드 애플리케이션 개발 |
-| 장원석 | nicoffeingg@gmail.com   | 모니터링 환경 구성, Prometheus Manager 구현 |
+| 장원석 | daily142857@gmail.com   | 모니터링 환경 구성, Prometheus Manager 구현 |
