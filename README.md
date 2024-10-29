@@ -66,10 +66,11 @@ wget https://raw.githubusercontent.com/pnucse-capstone-2024/Capstone-2024-team-3
 - spring boot 3.3.1
 ```
 git clone https://github.com/pnucse-capstone-2024/Capstone-2024-team-31.git
-cd backend
-cd wasin
+cd backend/wasin
 // 환경변수 설정, 레디스 실행
 ./gradlew build -x test
+cd build/libs
+java -jar wasin-0.0.1-SNAPSHOT.jar
 ```
 
 ### 3.3. 라즈베리파이
