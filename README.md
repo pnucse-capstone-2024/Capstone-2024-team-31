@@ -54,7 +54,7 @@ wget https://raw.githubusercontent.com/pnucse-capstone-2024/Capstone-2024-team-3
 ./router_setup_1 <hostname>
 
 # 5. 와이파이의 SSID를 설정하고 필수 패키지를 설치한다.
-./router_setup_2
+./router_setup_2 <SSID>
 
 # 6. 공유기의 메트릭 수집을 위해 Prometheus에 등록한다.
 ./register_router <ip> <port>
